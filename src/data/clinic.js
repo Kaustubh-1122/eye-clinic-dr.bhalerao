@@ -14,6 +14,31 @@ export const clinic = {
   email: '', // EDIT: add clinic email to show it in the footer
 }
 
+export const ratingSummary = {
+  average: 4.8,
+  total: 403,
+  breakdown: [
+    { stars: 5, percentage: 86 },
+    { stars: 4, percentage: 10 },
+    { stars: 3, percentage: 2 },
+    { stars: 2, percentage: 1 },
+    { stars: 1, percentage: 1 },
+  ],
+}
+
+export const reviews = [
+  {
+    text: 'Very good service,staff is polite,reasonable rates and excellent quality.',
+    source: 'Google Review',
+    rating: 5,
+  },
+  {
+    text: 'Excellent service,quality products,,I will highly recommend this place.',
+    source: 'Google Review',
+    rating: 5,
+  },
+]
+
 export const services = [
   {
     id: 'checkup',

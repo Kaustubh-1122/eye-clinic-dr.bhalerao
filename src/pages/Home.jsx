@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import EyeArt from '../components/EyeArt.jsx'
 import BookingForm from '../components/BookingForm.jsx'
-import { clinic, services } from '../data/clinic.js'
+import { clinic, services, reviews, ratingSummary } from '../data/clinic.js'
 
 const steps = [
   ['Tell us what is bothering you', 'Blurry reading, headaches, itchy eyes or just a routine check. We listen first.'],
@@ -88,6 +88,93 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Review summary & Patient feedback */}
+      <section className="border-y border-ink/5 bg-mist/60 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-5">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1 text-sm font-semibold text-teal-dark shadow-sm">
+                <span>Google Reviews</span>
+                <span className="font-bold text-sun">★ {clinic.rating}</span>
+                <span className="text-ink/60">({clinic.reviews})</span>
+              </div>
+              <h2 className="mt-3 text-4xl sm:text-5xl">What our patients say</h2>
+            </div>
+            <p className="max-w-xs text-sm text-ink/70">
+              Honest feedback from patients visiting {clinic.name} in New Sangavi.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_2fr] items-stretch">
+            {/* Review summary breakdown card */}
+            <div className="flex flex-col justify-between rounded-3xl border border-ink/5 bg-white p-7 shadow-sm">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-teal-dark">Review summary</p>
+                <div className="mt-3 flex items-baseline gap-3">
+                  <span className="font-display text-5xl font-bold leading-none">{clinic.rating}</span>
+                  <div>
+                    <div className="text-sun text-lg">★★★★★</div>
+                    <p className="mt-0.5 text-xs text-ink/60">{clinic.reviews} reviews on Google</p>
+                  </div>
+                </div>
+
+                {/* 5, 4, 3, 2, 1 Star Breakdown Bars */}
+                <div className="mt-6 space-y-2">
+                  {ratingSummary.breakdown.map((item) => (
+                    <div key={item.stars} className="flex items-center gap-3 text-xs font-medium text-ink/70">
+                      <span className="w-3 text-right">{item.stars}</span>
+                      <span className="text-sun text-xs">★</span>
+                      <div className="h-2 flex-1 overflow-hidden rounded-full bg-ink/10">
+                        <div
+                          className="h-full rounded-full bg-sun"
+                          style={{ width: `${item.percentage}%` }}
+                        />
+                      </div>
+                      <span className="w-7 text-right text-ink/50">{item.percentage}%</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-center justify-between border-t border-ink/5 pt-4 text-xs font-medium text-ink/60">
+                <span>Verified Google Rating</span>
+                <a
+                  href={clinic.mapsLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-bold text-teal-dark hover:underline"
+                >
+                  View on Google Maps →
+                </a>
+              </div>
+            </div>
+
+            {/* Patient review cards */}
+            <div className="grid gap-6 sm:grid-cols-2">
+              {reviews.map((r, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col justify-between rounded-3xl border border-ink/5 bg-white p-7 shadow-sm transition hover:shadow-md"
+                >
+                  <div>
+                    <div className="text-lg text-sun">
+                      {'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}
+                    </div>
+                    <blockquote className="mt-4 text-ink/85 italic leading-relaxed">
+                      "{r.text}"
+                    </blockquote>
+                  </div>
+                  <div className="mt-6 flex items-center justify-between border-t border-ink/5 pt-4 text-xs font-semibold uppercase tracking-wider text-ink/60">
+                    <span>{r.source}</span>
+                    <span className="font-medium text-teal-dark">Verified Patient</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
