@@ -3,7 +3,6 @@ import EyeArt from '../components/EyeArt.jsx'
 import BookingForm from '../components/BookingForm.jsx'
 import { clinic, services } from '../data/clinic.js'
 
-const tones = ['bg-teal text-white', 'bg-petal', 'bg-mist', 'bg-mist', 'bg-petal', 'bg-white border-2 border-ink/10']
 const steps = [
   ['Tell us what is bothering you', 'Blurry reading, headaches, itchy eyes or just a routine check. We listen first.'],
   ['A careful, unhurried examination', 'Vision, eye pressure and the back of the eye are checked one by one.'],
@@ -36,18 +35,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services offered section just below hero section */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-5 sm:py-24">
-        <h2 className="max-w-xl text-4xl sm:text-5xl">What we take care of</h2>
-        <p className="mt-3 max-w-lg text-ink/75">From first glasses to sight-saving screening, everything starts with a proper examination.</p>
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, i) => (
-            <li key={s.id} className={`rounded-3xl p-7 ${tones[i]} ${i === 0 ? 'lg:row-span-2 lg:flex lg:flex-col lg:justify-end lg:p-9' : ''}`}>
-              <h3 className={i === 0 ? 'text-3xl' : 'text-2xl'}>{s.title}</h3>
-              <p className={`mt-3 ${i === 0 ? 'text-white/85' : 'text-ink/75'}`}>{s.text}</p>
-            </li>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h2 className="max-w-xl text-4xl sm:text-5xl">What we take care of</h2>
+            <p className="mt-3 max-w-lg text-ink/75">From first glasses to sight-saving screening, everything starts with a proper examination.</p>
+          </div>
+          <Link to="/services" className="font-bold text-teal-dark underline decoration-2 underline-offset-4">See all services →</Link>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <div
+              key={s.id}
+              className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10"
+            >
+              <div className="aspect-[16/10] overflow-hidden bg-mist">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-1 flex-col justify-between p-6">
+                <div>
+                  <h3 className="text-xl font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/75">{s.text}</p>
+                </div>
+                <div className="mt-5 border-t border-ink/5 pt-3">
+                  <Link
+                    to="/contact#book"
+                    className="text-xs font-bold uppercase tracking-wider text-teal-dark hover:underline"
+                  >
+                    Book for this service →
+                  </Link>
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
-        <Link to="/services" className="mt-8 inline-block font-bold text-teal-dark underline decoration-2 underline-offset-4">See all services</Link>
+        </div>
       </section>
 
       <section className="bg-petal">

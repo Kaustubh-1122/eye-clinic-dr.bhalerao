@@ -15,10 +15,40 @@ export const clinic = {
 }
 
 export const services = [
-  { id: 'checkup', title: 'Comprehensive eye check-up', text: 'Vision, eye pressure and retina check, with clear answers about what we find.' },
-  { id: 'cataract', title: 'Cataract evaluation', text: 'Understand your options for cloudy vision, lens choices and recovery.' },
-  { id: 'glaucoma', title: 'Glaucoma screening', text: 'Often silent early on. Regular pressure and optic nerve checks catch it in time.' },
-  { id: 'paediatric', title: "Children's eye care", text: 'Gentle testing for squint, lazy eye and fast-changing power in growing eyes.' },
-  { id: 'dry', title: 'Dry eye and allergy care', text: 'Relief for burning, redness and itching, plus advice for long screen hours.' },
-  { id: 'glasses', title: 'Glasses and lens advice', text: 'An accurate prescription and honest guidance on lenses that suit your routine.' },
+  {
+    id: 'checkup',
+    title: 'Comprehensive eye check-up',
+    text: 'Vision, eye pressure and retina check, with clear answers about what we find.',
+    image: '/eye-exam.jpg',
+  },
+  {
+    id: 'cataract',
+    title: 'Cataract evaluation',
+    text: 'Understand your options for cloudy vision, lens choices and recovery.',
+    image: '/hero-clinic.jpg',
+  },
+  {
+    id: 'glaucoma',
+    title: 'Glaucoma screening',
+    text: 'Often silent early on. Regular pressure and optic nerve checks catch it in time.',
+    image: '/contact-lens.jpg',
+  },
+  {
+    id: 'paediatric',
+    title: "Children's eye care",
+    text: 'Gentle testing for squint, lazy eye and fast-changing power in growing eyes.',
+    image: '/pediatric-eye.jpg',
+  },
+  {
+    id: 'dry',
+    title: 'Dry eye and allergy care',
+    text: 'Relief for burning, redness and itching, plus advice for long screen hours.',
+    image: '/eyewear-collection.jpg',
+  },
+  {
+    id: 'glasses',
+    title: 'Glasses and lens advice',
+    text: 'An accurate prescription and honest guidance on lenses that suit your routine.',
+    image: '/optical-frames.jpg',
+  },
 ]
