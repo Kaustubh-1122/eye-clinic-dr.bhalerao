@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { @apply min-w-[320px] overflow-x-hidden font-sans text-ink bg-white antialiased; }
+h1, h2, h3 { @apply font-display; font-weight: 400 !important; letter-spacing: -0.01em; }
+:focus-visible { outline: 3px solid #FFB020; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+@layer components {
+  .btn { @apply inline-flex min-h-12 items-center justify-center rounded-full px-5 py-3 text-center font-bold transition hover:-translate-y-0.5 sm:px-6; }
+  .btn-primary { @apply bg-teal text-white shadow-lg shadow-teal/25 hover:bg-teal-dark; }
+  .btn-sun { @apply bg-sun text-ink hover:brightness-95; }
+  .btn-ghost { @apply border-2 border-ink/20 text-ink hover:border-ink hover:bg-white; }
+  .field { @apply w-full min-w-0 rounded-xl border-2 border-ink/15 bg-white px-4 py-3 text-base focus:border-teal; }
+  .blob { border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%; }
+}
+@keyframes bob { 0%,100% { transform: rotate(-6deg) translateY(0) } 50% { transform: rotate(-6deg) translateY(-8px) } }
+.bob { animation: bob 5s ease-in-out infinite; }
+
+@media (max-width: 374px) {
+  .btn { @apply w-full; }
+}
